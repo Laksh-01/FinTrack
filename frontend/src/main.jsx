@@ -13,6 +13,7 @@ import { Toaster } from 'sonner';
 // const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
 
+const REDIRECT_URL = import.meta.env.VITE_REDIRECT_URL;
 if (!PUBLISHABLE_KEY) {
   throw new Error('Missing Publishable Key');
 }
@@ -23,7 +24,9 @@ createRoot(document.getElementById('root')).render(
     <Router>
       <ClerkProvider
         publishableKey={PUBLISHABLE_KEY}
-        afterSignOutUrl={import.meta.env.VITE_REDIRECT_URL}
+        navigate={(to) => window.location.replace(to)} // Important for hosted pages like Clerk
+        afterSignOutUrl={REDIRECT_URL}
+        
         appearance={{
           baseTheme: 'dark', 
         }}
