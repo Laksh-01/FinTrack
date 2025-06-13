@@ -28,20 +28,17 @@ function App() {
   return (
     
     <Routes>
-  <Route path="/" element={<Navigate to="/app" replace />} />
 
-  <Route path="/app/*" element={<Page />}>
-    <Route path="v1/dashboard" element={<Dashboard />} />
-    <Route path="transaction/create" element={<TransactionPage />} />
-    <Route path="transaction/edit/:accountId" element={<TransactionPage />} />
-    <Route path="account/:accountId" element={<AccountPage />} />
+    <Route path="/" element={<Navigate to="/app" replace />} />
+
+  
+    <Route path="/app/*" element={<Page/>} />
+    <Route path = "/app/v1/dashboard" element={<Dashboard/>} />
+     <Route path = "/transaction/create" element={<TransactionPage/>} />
+     <Route path = "/transaction/edit/:accountId" element={<TransactionPage/>} />
+    <Route path="/account/:accountId" element={<AccountPage />} />
     <Route path="*" element={<PageNotFound />} />
-  </Route>
-
-  {/* Fallback route if /app doesn't match */}
-  <Route path="*" element={<PageNotFound />} />
 </Routes>
-
 
   );
 }
