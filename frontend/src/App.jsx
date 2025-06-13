@@ -33,7 +33,7 @@ function App() {
 
   
     <Route path="/app/*" element={<Page/>} />
-    <Route path = "/app/v1/dashboard" element={<Dashboard/>} />
+    <Route path = "/v1/dashboard" element={<Dashboard/>} />
      <Route path = "/transaction/create" element={<TransactionPage/>} />
      <Route path = "/transaction/edit/:accountId" element={<TransactionPage/>} />
     <Route path="/account/:accountId" element={<AccountPage />} />
