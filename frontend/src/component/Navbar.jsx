@@ -1,5 +1,5 @@
 import { SignedIn, SignedOut, SignInButton, UserButton, useUser } from "@clerk/clerk-react";
-import { Button } from "./ui/button"; // adjust the path as needed
+import { Button } from "../../components/ui/button"; // adjust the path as needed
 import { Link } from "react-router-dom";
 import { ModeToggle } from "./mode-toggle";
 
