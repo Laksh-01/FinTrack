@@ -22,10 +22,22 @@ const app = express();
 const connectionString = process.env.DATABASE_URL;
 const sql = postgres(connectionString);
 
-app.use(cors({
-  origin: 'http://localhost:5173'
-}));
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://fintracker-gamma.vercel.app"
+];
 
+
+app.use(cors({
+  origin: (origin, callback) => {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  credentials: true 
+}));
 app.use(express.json());
 
 app.use('/api', dashboardRoutes());

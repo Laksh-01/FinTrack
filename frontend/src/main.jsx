@@ -5,13 +5,13 @@ import './index.css';
 import App from './App.jsx';
 import { ClerkProvider } from '@clerk/clerk-react';
 import { ThemeProvider } from '../components/theme-provider.jsx'; // Assuming this path is correct
-import {} from '../components/ui/sonner.jsx';
+import {sonner} from '../components/ui/sonner.jsx';
 import { Toaster } from 'sonner';
 
 
 // It's better to get this from environment variables for security and flexibility
 // const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
-const PUBLISHABLE_KEY = "pk_test_ZGlzdGluY3QtbGFkeWJpcmQtNTYuY2xlcmsuYWNjb3VudHMuZGV2JA"; // Your hardcoded key
+const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
 
 if (!PUBLISHABLE_KEY) {
   throw new Error('Missing Publishable Key');
