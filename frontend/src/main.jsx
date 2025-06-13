@@ -24,7 +24,7 @@ createRoot(document.getElementById('root')).render(
     <Router>
       <ClerkProvider
         publishableKey={PUBLISHABLE_KEY}
-        navigate={(to) => window.location.replace(to)} // Important for hosted pages like Clerk
+        // navigate={(to) => window.location.replace(to)} // Important for hosted pages like Clerk
         afterSignOutUrl={REDIRECT_URL}
         
         appearance={{

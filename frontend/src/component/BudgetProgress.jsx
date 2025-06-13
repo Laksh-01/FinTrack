@@ -70,13 +70,13 @@ const BudgetProgress = ({ initialBudget, currentExpenses, onBudgetUpdate ,loadin
   if (loading) {
   return (
     <div className="p-6 m-[30px] text-muted-foreground text-sm">
-     <Loader/>
+     <Loader />
     </div>
   );
 }
 
 
-console.log(currentExpenses);
+// console.log(currentExpenses);
 
 
   return (

@@ -88,6 +88,7 @@ const DashboardPage = () => {
   };
 
   const fetchBudget = async () => {
+     setLoading(true);
     try {
       const response = await fetch(`${import.meta.env.VITE_API_URL}/get-budget`, {
         method: "POST",
@@ -98,12 +99,18 @@ const DashboardPage = () => {
       if (!response.ok) throw new Error('Failed to fetch budget');
 
       const data = await response.json();
-      setBudgetInfo({
-        amount: data.budget.amount,
-        currentExpenses: data.currentExpenses
-      });
+      // console.log(data);
+      // if(data.budget && data.currentExpenses){
+    
+        setBudgetInfo({
+          amount: data.budget?.amount || 0,
+          currentExpenses: data?.currentExpenses || 0
+        });
+    
     } catch (error) {
       console.error('Error fetching budget:', error);
+    }finally{
+      setLoading(false);
     }
   };
 
@@ -138,7 +145,7 @@ const DashboardPage = () => {
           initialBudget={budgetInfo.amount}
           currentExpenses={budgetInfo.currentExpenses}
           onBudgetUpdate={fetchBudget}
-          loading={!budgetInfo.amount}
+          loading={loading}
         />
       )}
 
