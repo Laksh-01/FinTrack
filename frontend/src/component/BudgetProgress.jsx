@@ -40,7 +40,7 @@ const BudgetProgress = ({ initialBudget, currentExpenses, onBudgetUpdate ,loadin
 
     setIsLoading(true);
     try {
-      const response = await fetch("http://localhost:3000/api/update-budget", {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/update-budget`, {
         method: "POST",
         headers: { "Content-type": "application/json" },
         body: JSON.stringify({ clerkUserId, amount }),

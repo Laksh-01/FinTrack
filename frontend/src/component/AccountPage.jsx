@@ -28,7 +28,7 @@ const AccountPage = () => {
     setLoading(true);
     setError(null);
     try {
-      const response = await fetch(`http://localhost:3000/api/get-accounts-with-Transaction?page=${pageToFetch}&pageSize=${pageSize}`, {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/get-accounts-with-Transaction?page=${pageToFetch}&pageSize=${pageSize}`, {
         method: 'POST',
         headers: { 'Content-type': 'application/json' },
         body: JSON.stringify({ clerkUserId, accountId }),
@@ -57,7 +57,7 @@ const AccountPage = () => {
     if (!clerkUserId || !accountId) return;
 
     try {
-      const response = await fetch(`http://localhost:3000/api/get-accounts-with-Transaction-all`, {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/get-accounts-with-Transaction-all`, {
         method: 'POST',
         headers: { 'Content-type': 'application/json' },
         body: JSON.stringify({ clerkUserId, accountId }),

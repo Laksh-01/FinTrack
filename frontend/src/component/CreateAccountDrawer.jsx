@@ -53,7 +53,7 @@ const CreateAccountDrawer = ({ children, onAccountCreated }) => {
     try {
       const payload = { ...data, userId: user.id };
 
-      const response = await fetch('http://localhost:3000/api/create-account', {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/create-account`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),

@@ -23,7 +23,7 @@ const scanFile = async (file) => {
     const formData = new FormData();
     formData.append("file", file);
 
-    const response = await fetch(`http://localhost:3000/api/transaction/scan-receipt`, {
+    const response = await fetch(`${import.meta.env.VITE_API_URL}/transaction/scan-receipt`, {
       method: "POST",
       body: formData,
     });

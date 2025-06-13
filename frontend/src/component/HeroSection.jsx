@@ -27,7 +27,7 @@ export const HeroSection = () => {
         
         // Ensure your backend server is running and accessible at this URL
         // Make sure this URL matches your backend route exactly (e.g., /api/users/sync)
-        const response = await fetch('http://localhost:3000/api/sync', {
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/sync`, {
           method: "POST",
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({

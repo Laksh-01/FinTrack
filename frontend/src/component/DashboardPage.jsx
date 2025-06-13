@@ -24,7 +24,7 @@ const DashboardPage = () => {
 
   const getAccounts = async () => {
     try {
-      const response = await fetch(`http://localhost:3000/api/get-accounts`, {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/get-accounts`, {
         method: 'POST',
         headers: { 'Content-type': 'application/json' },
         body: JSON.stringify({ clerkUserId })
@@ -45,7 +45,7 @@ const DashboardPage = () => {
 
   const getTransactions = async () => {
     try {
-      const response = await fetch(`http://localhost:3000/api/get-data`, {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/get-data`, {
         method: 'POST',
         headers: { 'Content-type': 'application/json' },
         body: JSON.stringify({ clerkUserId })
@@ -70,7 +70,7 @@ const DashboardPage = () => {
     if (!clerkUserId) return;
     setUpdating(true);
     try {
-      const response = await fetch('http://localhost:3000/api/update-default-accounts', {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/update-default-accounts`, {
         method: 'POST',
         headers: { 'Content-type': 'application/json' },
         body: JSON.stringify({ accountId, clerkUserId }),
@@ -89,7 +89,7 @@ const DashboardPage = () => {
 
   const fetchBudget = async () => {
     try {
-      const response = await fetch('http://localhost:3000/api/get-budget', {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/get-budget`, {
         method: "POST",
         headers: { "Content-type": "application/json" },
         body: JSON.stringify({ clerkUserId, accountId: id }),

@@ -96,7 +96,7 @@ const AddTransactionForm = ({ accounts, categories, editMode = false, initialDat
   const clerkUserId = user?.id
   const createTransaction = async (data, accountId) => {
     try {
-      const response = await fetch(`http://localhost:3000/api/transaction/create-transaction`, {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/transaction/create-transaction`, {
         method: 'POST',
         headers: { 'Content-type': 'application/json' },
         body: JSON.stringify({ clerkUserId, accountId, data }),
@@ -114,7 +114,7 @@ const AddTransactionForm = ({ accounts, categories, editMode = false, initialDat
 
   const updateTransaction = async (data,accountId) => {
     try {
-      const response = await fetch(`http://localhost:3000/api/transaction/update-transaction`, {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/transaction/update-transaction`, {
         method: 'POST',
         headers: { 'Content-type': 'application/json' },
        body: JSON.stringify({ clerkUserId, accountId, id: initialData.id, data }),
@@ -209,7 +209,7 @@ const AddTransactionForm = ({ accounts, categories, editMode = false, initialDat
             <SelectContent>
               {accounts.map((account) => (
                 <SelectItem key={account.id} value={account.id}>
-                  {account.name} (${parseFloat(account.balance).toFixed(2)})
+                  {account.name} (₹{parseFloat(account.balance).toFixed(2)})
                 </SelectItem>
               ))}
               <CreateAccountDrawer>

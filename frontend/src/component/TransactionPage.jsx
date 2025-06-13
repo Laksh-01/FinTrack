@@ -17,7 +17,7 @@ const TransactionPage = () => {
 
   const getAccounts = async () => {
     try {
-      const response = await fetch(`http://localhost:3000/api/get-accounts`, {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/get-accounts`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ clerkUserId }),
@@ -37,7 +37,7 @@ const TransactionPage = () => {
 
   const getTransaction = async (accountId) => {
     try {
-      const response = await fetch(`http://localhost:3000/api/transaction/get-transaction`, {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/transaction/get-transaction`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ clerkUserId , accountId }),

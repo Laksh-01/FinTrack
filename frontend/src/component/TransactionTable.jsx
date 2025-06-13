@@ -195,7 +195,7 @@ const TransactionTable = ({ transactions = [], onDataChange }) => {
 
     const manageTransactionDelete = async (transactionId) => {
         try {
-            const response = await fetch("http://localhost:3000/api/account/deleteTransaction", {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/account/deleteTransaction`, {
                 method: 'POST',
                 headers: { 'Content-type': 'application/json' },
                 body: JSON.stringify({ clerkUserId, transactionId }),
@@ -211,7 +211,7 @@ const TransactionTable = ({ transactions = [], onDataChange }) => {
 
     const handleBulkDelete = async (selectedIDs) => {
         try {
-            const response = await fetch("http://localhost:3000/api/account/deleteBulkTransactions", {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/account/deleteBulkTransactions`, {
                 method: 'POST',
                 headers: { 'Content-type': 'application/json' },
                 body: JSON.stringify({ clerkUserId, transactionIds: selectedIDs }),
