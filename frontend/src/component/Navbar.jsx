@@ -61,7 +61,10 @@ const Header = () => {
           </SignedIn>
 
           <SignedOut>
-            <SignInButton redirectUrl={REDIRECT_URL}>
+            <SignInButton
+              signInForceRedirectUrl="/"
+              signInFallbackRedirectUrl="/"
+            >
               <Button variant="outline">Login</Button>
             </SignInButton>
           </SignedOut>

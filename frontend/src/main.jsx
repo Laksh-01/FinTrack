@@ -24,13 +24,15 @@ createRoot(document.getElementById('root')).render(
     <Router>
       <ClerkProvider
         publishableKey={PUBLISHABLE_KEY}
-        navigate={(to) => window.location.replace(to)} // Important for hosted pages like Clerk
+        navigate={(to) => window.location.replace(to)}
+        afterSignInUrl="/"                       // ✅ Add this
+        afterSignUpUrl="/"                       // ✅ And this
         afterSignOutUrl={REDIRECT_URL}
-        
         appearance={{
-          baseTheme: 'dark', 
+          baseTheme: 'dark',
         }}
-      >
+>
+
         <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
           <App /> 
           <Toaster richColors/>
