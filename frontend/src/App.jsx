@@ -27,18 +27,22 @@ function App() {
 
   return (
     
-    <Routes>
+   <Routes>
+      {/* Serve Page on the root path */}
+      <Route path="/" element={<Page />} />
 
-    <Route path="/" element={<Navigate to="/app" replace />} />
+      {/* If needed, you can also serve Page on /app */}
+      <Route path="/app/*" element={<Page />} />
 
-  
-    <Route path="/app/*" element={<Page/>} />
-    <Route path = "/v1/dashboard" element={<Dashboard/>} />
-     <Route path = "/transaction/create" element={<TransactionPage/>} />
-     <Route path = "/transaction/edit/:accountId" element={<TransactionPage/>} />
-    <Route path="/account/:accountId" element={<AccountPage />} />
-    <Route path="*" element={<PageNotFound />} />
-</Routes>
+      {/* Other routes */}
+      <Route path="/v1/dashboard" element={<Dashboard />} />
+      <Route path="/transaction/create" element={<TransactionPage />} />
+      <Route path="/transaction/edit/:accountId" element={<TransactionPage />} />
+      <Route path="/account/:accountId" element={<AccountPage />} />
+
+      {/* Fallback for any unknown paths */}
+      <Route path="*" element={<PageNotFound />} />
+    </Routes>
 
   );
 }
