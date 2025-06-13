@@ -1,3 +1,5 @@
+require('dotenv').config();  
+
 const express = require('express');
 const prisma = require('./lib/prisma');
 const { inngest } = require("./src/inngest/index.js");
