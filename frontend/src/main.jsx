@@ -23,7 +23,7 @@ createRoot(document.getElementById('root')).render(
     <Router>
       <ClerkProvider
         publishableKey={PUBLISHABLE_KEY}
-        afterSignOutUrl="/app"
+        afterSignOutUrl={import.meta.env.VITE_REDIRECT_URL}
         appearance={{
           baseTheme: 'dark', 
         }}
