@@ -5,7 +5,7 @@ import './index.css';
 import App from './App.jsx';
 import { ClerkProvider } from '@clerk/clerk-react';
 import { ThemeProvider } from '../components/theme-provider.jsx'; // Assuming this path is correct
-import {sonner} from '../components/ui/sonner.jsx';
+import {} from '../components/ui/sonner.jsx';
 import { Toaster } from 'sonner';
 
 
