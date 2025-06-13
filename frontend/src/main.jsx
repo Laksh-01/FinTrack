@@ -25,9 +25,8 @@ createRoot(document.getElementById('root')).render(
       <ClerkProvider
         publishableKey={PUBLISHABLE_KEY}
         navigate={(to) => window.location.replace(to)}
-        afterSignInUrl="/"                       // ✅ Add this
-        afterSignUpUrl="/"                       // ✅ And this
-        afterSignOutUrl={REDIRECT_URL}
+
+        afterSignOutUrl="/"
         appearance={{
           baseTheme: 'dark',
         }}

@@ -62,9 +62,9 @@ const Header = () => {
 
           <SignedOut>
             <SignInButton
-              signInForceRedirectUrl="/"
-              signInFallbackRedirectUrl="/"
-            >
+            forceRedirectUrl="/"
+            fallbackRedirectUrl="/"
+          >
               <Button variant="outline">Login</Button>
             </SignInButton>
           </SignedOut>
