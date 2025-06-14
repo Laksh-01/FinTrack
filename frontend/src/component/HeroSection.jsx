@@ -85,21 +85,21 @@ export const HeroSection = () => {
         </p>
 
         <div className="flex justify-center space-x-4">
-          <Link to="/app/v1/dashboard">
+          <Link to="/v1/dashboard">
             <Button size="lg" className="px-8">
               Get Started
             </Button>
           </Link>
 
-          <a
-            href=""
+          {/* <a
+            href="/v1/dashboard"
             target="_blank"
             rel="noopener noreferrer"
           >
             <Button size="lg" variant="outline" className="px-8">
               Watch Demo
-            </Button>
-          </a>
+            </Button> */}
+          {/* </a> */}
         </div>
 
         <div className="hero-image-wrapper mt-5 md:mt-0">

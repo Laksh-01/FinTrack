@@ -10,14 +10,7 @@ const ReceiptScanner = ({ onScanComplete }) => {
   const [scanReceiptLoading , setscanReceiptLoading] = useState(false);
   const [scannedData,setscannedData] = useState("");
   const [scanReceiptFn,setscanReceiptFn] = useState("");
-//   const {
-//     loading: scanReceiptLoading,
-//     fn: scanReceiptFn,
-//     data: scannedData,
-//   } = useFetch(scanReceipt);
-
-
-const scanFile = async (file) => {
+  const scanFile = async (file) => {
   setscanReceiptLoading(true);
   try {
     const formData = new FormData();
@@ -29,10 +22,14 @@ const scanFile = async (file) => {
     });
 
     if (!response.ok) throw new Error("Failed to scan receipt");
-
     const result = await response.json();
-    console.log(result);
-    setscannedData(result); // or result.data if you structure it like that
+    console.log(result.success);
+    if (result.success === false) {
+      toast.error(result.message);
+      return; 
+    }
+
+    setscannedData(result);
   } catch (error) {
     console.error("Error:", error);
     toast.error("Failed to scan receipt");
@@ -53,45 +50,51 @@ const scanFile = async (file) => {
 
 
   useEffect(() => {
-    if (scannedData && !scanReceiptLoading) {
-      onScanComplete(scannedData);
-      toast.success("Receipt scanned successfully");
-    }
-  }, [scanReceiptLoading, scannedData]);
+  if (scannedData && !scanReceiptLoading && scannedData.success !== false) {
+    onScanComplete(scannedData);
+    toast.success("Receipt scanned successfully");
+  }
+}, [scanReceiptLoading, scannedData]);
 
   return (
-    <div className="flex items-center gap-4">
-      <input
-        type="file"
-        ref={fileInputRef}
-        className="hidden"
-        accept="image/*"
-        capture="environment"
-        onChange={(e) => {
-          const file = e.target.files?.[0];
-          if (file) handleReceiptScan(file);
-        }}
-      />
-      <Button
-        type="button"
-        variant="outline"
-        className="w-full h-10 bg-gradient-to-br from-orange-500 via-pink-500 to-purple-500 animate-gradient hover:opacity-90 transition-opacity text-white hover:text-white"
-        onClick={() => fileInputRef.current?.click()}
-        disabled={scanReceiptLoading}
-      >
-        {scanReceiptLoading ? (
-          <>
-            <Loader2 className="mr-2 animate-spin" />
-            <span>Scanning Receipt...</span>
-          </>
-        ) : (  
-          <>
-            <Camera className="mr-2" />
-            <span>Scan Receipt with AI</span>
-          </>
-        )}
-      </Button>
-    </div>
+   <div className="flex flex-col gap-4">
+  <Button
+    variant="outline"
+    className="bg-gradient-to-br from-orange-500 via-pink-500 to-purple-500 text-white hover:opacity-90"
+    onClick={() => {
+      fileInputRef.current.setAttribute("capture", "environment");
+      fileInputRef.current.click();
+    }}
+    disabled={scanReceiptLoading}
+  >
+    <Camera className="mr-2" />
+    Take a Picture
+  </Button>
+
+  <Button
+    variant="outline"
+    className="bg-gradient-to-br from-purple-500 via-pink-500 to-orange-500 text-white hover:opacity-90"
+    onClick={() => {
+      fileInputRef.current.removeAttribute("capture");
+      fileInputRef.current.click();
+    }}
+    disabled={scanReceiptLoading}
+  >
+    📁 Pick from Gallery
+  </Button>
+
+  <input
+    type="file"
+    ref={fileInputRef}
+    className="hidden"
+    accept="image/*"
+    onChange={(e) => {
+      const file = e.target.files?.[0];
+      if (file) handleReceiptScan(file);
+    }}
+  />
+</div>
+
   );
 }
 
