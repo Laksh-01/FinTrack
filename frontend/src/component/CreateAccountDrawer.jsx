@@ -51,7 +51,13 @@ const CreateAccountDrawer = ({ children, onAccountCreated }) => {
   const onSubmit = async (data) => {
     setIsLoading(true);
     try {
+      if(!user){
+        toast.error("User must be logged in first");
+        return;
+      }
       const payload = { ...data, userId: user.id };
+
+
 
       const response = await fetch(`${import.meta.env.VITE_API_URL}/create-account`, {
         method: 'POST',

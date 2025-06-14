@@ -46,7 +46,6 @@ const TransactionPage = () => {
       if (!response.ok) throw new Error('Failed to fetch accounts');
 
       const result = await response.json();
-      // console.log(result);
       setInitialData(result.transaction);
     } catch (error) {
       console.error('Error:', error);

@@ -107,7 +107,6 @@ const TransactionTable = ({ transactions = [], onDataChange }) => {
     const [typeFilter, setTypeFilter] = useState("");
     const [recurringFilter, setRecurringFilter] = useState("");
     const [selectedIDs, setSelectedIds] = useState([]);
-    // Added missing state for pagination logic in your filters
     const [currentPage, setCurrentPage] = useState(1);
     const [sortConfig, setSortConfig] = useState({
         field: "date",
