@@ -99,12 +99,10 @@ const DashboardPage = () => {
       if (!response.ok) throw new Error('Failed to fetch budget');
 
       const data = await response.json();
-      // console.log(data);
-      // if(data.budget && data.currentExpenses){
     
         setBudgetInfo({
-          amount: data.budget?.amount || 0,
-          currentExpenses: data?.currentExpenses || 0
+          amount: data.budget?.amount ,
+          currentExpenses: data?.currentExpenses
         });
     
     } catch (error) {
