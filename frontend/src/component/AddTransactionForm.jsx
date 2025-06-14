@@ -154,14 +154,38 @@ const AddTransactionForm = ({ accounts, categories, editMode = false, initialDat
   const filteredCategories = categories.filter((category) => category.type === type)
 
   const handleScanComplete = (scannedData) => {
-    if (scannedData) {
-      setValue("amount", scannedData.amount.toString())
-      setValue("date", new Date(scannedData.date))
-      if (scannedData.description) setValue("description", scannedData.description)
-      if (scannedData.category) setValue("category", scannedData.category)
-      toast.success("Receipt scanned successfully")
+  if (scannedData) {
+    const { amount, date, description, category } = scannedData;
+
+    // --- THE FIX IS HERE ---
+    if (amount != null) { // Use != null to catch both null and undefined
+      const numericAmount = parseFloat(amount);
+      if (!isNaN(numericAmount)) {
+        // Set the value as a NUMBER and trigger validation to clear any old errors.
+        setValue("amount", numericAmount, { shouldValidate: true });
+      }
     }
+    // --- END OF FIX ---
+
+    if (date) {
+      setValue("date", new Date(date), { shouldValidate: true });
+    }
+    if (description) {
+      setValue("description", description, { shouldValidate: true });
+    }
+    
+    // See "Potential Second Bug" section below about this line
+    if (category) {
+      // Logic to find category ID might be needed here
+      const categoryToSet = categories.find(c => c.name.toLowerCase() === category.toLowerCase());
+      if (categoryToSet) {
+        setValue("category", categoryToSet.id, { shouldValidate: true });
+      }
+    }
+    
+    toast.success("Receipt details populated!");
   }
+};
 
 
 
