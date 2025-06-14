@@ -1,5 +1,5 @@
 // controllers/transactionController.js
-const { Prisma } = require("@prisma/client"); // Correct import for Decimal
+const { Prisma } = require("../generated/prisma"); 
 const db = require("../lib/prisma");
 
 const deleteBulkTransactions = async (req, res) => {
