@@ -19,7 +19,7 @@ export const StatsData = () => { // Renamed component for clarity
     // Your styling is preserved
     <main className="min-h-screen bg-background text-foreground">
       {/* 1. Hero Section */}
-      <section className="py-24 sm:py-32">
+      <section className="py-24 sm:py-32 mt-[-90px]">
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-4xl font-bold tracking-tight text-gray-400 sm:text-6xl">
             Take Full Control of Your <span className="text-primary">Finances</span>
@@ -32,8 +32,8 @@ export const StatsData = () => { // Renamed component for clarity
             <SignedOut>
               <SignUpButton
                 mode="modal"
-                afterSignUpUrl="/dashboard"
-                afterSignInUrl="/dashboard"
+                afterSignUpUrl="/v1/dashboard"
+                afterSignInUrl="/v1/dashboard"
               >
                 <Button size="lg" className="animate-bounce cursor-pointer">
                   Start Free Trial
@@ -41,7 +41,7 @@ export const StatsData = () => { // Renamed component for clarity
               </SignUpButton>
             </SignedOut>
             <SignedIn>
-              <Link to="/dashboard">
+              <Link to="/v1/dashboard">
                 <Button size="lg">Go to Dashboard</Button>
               </Link>
             </SignedIn>
@@ -51,12 +51,12 @@ export const StatsData = () => { // Renamed component for clarity
       </section>
 
       {/* 2. Stats Section */}
-      <section className="py-16 ">
+      <section className="py-16 mt-[-80px] ">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-10 divide-gray-200">
             {statsData.map((stat, index) => (
-              <div key={index} className="text-center pt-4 md:pt-0">
-                <div className="text-4xl font-bold text-primary mb-2">
+              <div key={index} className="text-center pt-4 md:pt-0 " >
+                <div className="text-4xl font-bold text-blue-500 mb-2 ">
                   {stat.value}
                 </div>
                 <div className="text-muted-foreground">{stat.label}</div>
@@ -68,7 +68,7 @@ export const StatsData = () => { // Renamed component for clarity
 
       {/* 3. Features Section */}
       <section id="features" className="py-20">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-4  mt-[-40px] ">
           <div className="text-center max-w-3xl mx-auto">
             <h2 className="text-3xl font-bold tracking-tight text-gray-400 sm:text-4xl">
               Everything you need, all in one place
@@ -82,9 +82,9 @@ export const StatsData = () => { // Renamed component for clarity
               <Card key={index} className="p-2 transition-all duration-300 hover:shadow-xl hover:-translate-y-2 text-center">
                 <CardContent className="space-y-4 pt-6">
                   <div className="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center mx-auto">
-                    {feature.icon && <feature.icon className="h-8 w-8 text-primary" />}
+                    {feature.icon && <feature.icon className="h-8 w-8 text-primary " />}
                   </div>
-                  <h3 className="text-xl font-semibold">{feature.title}</h3>
+                  <h3 className="text-xl font-semibold text-blue-500">{feature.title}</h3>
                   <p className="text-muted-foreground">{feature.description}</p>
                 </CardContent>
               </Card>
@@ -95,17 +95,17 @@ export const StatsData = () => { // Renamed component for clarity
 
       {/* 4. How It Works Section */}
       <section className="py-20">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-4 mt-[-30px]">
           <div className="text-center max-w-3xl mx-auto">
             <h2 className="text-3xl font-bold tracking-tight text-gray-400  sm:text-4xl">
               Getting Started is Simple
             </h2>
           </div>
-          <div className="mt-16 max-w-2xl mx-auto">
+          <div className="mt-14 max-w-2xl mx-auto">
             <ol className="relative border-l border-gray-200">
               {howItWorksData.map((step, index) => (
                 <li key={index} className="mb-12 ml-8">
-                  <span className="absolute flex items-center justify-center w-10 h-10 bg-primary/10 rounded-full -left-5 ring-8 ring-background"> {/* Changed ring-white to ring-background */}
+                  <span className="absolute flex items-center justify-center w-10 h-10 bg-primary/10 rounded-full -left-5 ring-8 ring-background "> {/* Changed ring-white to ring-background */}
                     {step.icon && <step.icon className="w-5 h-5 text-primary" />}
                   </span>
                   <h3 className="mb-1 text-xl font-semibold text-gray-400">{step.title}</h3>
@@ -118,7 +118,7 @@ export const StatsData = () => { // Renamed component for clarity
       </section>
 
       {/* 5. Testimonials Section */}
-      <section id="testimonials" className="py-20 bg-muted/10">
+      <section id="testimonials" className="py-20 bg-muted/10 mt-[-30px]">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto">
             <h2 className="text-3xl font-bold tracking-tight text-gray-400 sm:text-4xl">
@@ -152,7 +152,7 @@ export const StatsData = () => { // Renamed component for clarity
       {/* 6. Final CTA Section */}
       <section className="py-20 ">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold text-white sm:text-4xl">
+          <h2 className="text-3xl font-bold text-blue-500 sm:text-4xl ">
             Ready to Take Control?
           </h2>
           <p className="text-slate-300 mt-4 mb-8 max-w-2xl mx-auto">

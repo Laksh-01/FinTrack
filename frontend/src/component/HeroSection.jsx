@@ -73,7 +73,7 @@ export const HeroSection = () => {
   }, []);
 
   return (
-    <section className="pt-40 pb-20 px-4">
+    <section className="pt-30 pb-20 px-4">
       <div className="container mx-auto text-center">
         <h1 className="text-5xl md:text-8xl lg:text-[105px] pb-6 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">
           Manage Your Finances <br /> with Intelligence
