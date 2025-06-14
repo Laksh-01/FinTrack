@@ -226,7 +226,8 @@ const AddTransactionForm = ({ accounts, categories, editMode = false, initialDat
       {/* Category */}
       <div className="space-y-2">
         <label className="text-sm font-medium block w-[150px]">Category</label>
-   <Select    value={getValues("category")} 
+   <Select    
+   value={watch("category")} 
    onValueChange={(value) => setValue("category", value)}
    >
 
@@ -279,8 +280,7 @@ const AddTransactionForm = ({ accounts, categories, editMode = false, initialDat
 <Controller
   name="isRecurring"
   control={control}
-  // 1. Remove redundant defaultValue={false} from here.
-  //    The default is correctly set in the useForm hook.
+
   render={({ field }) => (
     <div className="flex items-center justify-between rounded-lg border p-4">
       <div className="space-y-0.5">
@@ -290,10 +290,8 @@ const AddTransactionForm = ({ accounts, categories, editMode = false, initialDat
         </p>
       </div>
       <Switch
-        // The `value` from the field is correctly used here.
+  
         checked={field.value}
-        // 2. Pass the `onChange` handler from the field directly.
-        //    It's the most reliable and idiomatic way.
         onCheckedChange={field.onChange}
       />
     </div>
@@ -307,7 +305,7 @@ const AddTransactionForm = ({ accounts, categories, editMode = false, initialDat
           <label className="text-sm font-medium block w-[150px]">Recurring Interval</label>
         <Select
         onValueChange={(value) => setValue("recurringInterval", value)}
-        value={watch("recurringInterval")}  // <- ✅
+        value={watch("recurringInterval")}  
         >
 
             <SelectTrigger>
