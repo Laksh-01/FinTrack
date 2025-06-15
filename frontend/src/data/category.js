@@ -14,13 +14,13 @@ export const defaultCategories = [
     color: "#06b6d4", // cyan-500
     icon: "Laptop",
   },
-  {
-    id: "investments",
-    name: "Investments",
-    type: "INCOME",
-    color: "#6366f1", // indigo-500
-    icon: "TrendingUp",
-  },
+  // {
+  //   id: "investments",
+  //   name: "Investments",
+  //   type: "INCOME",
+  //   color: "#6366f1", // indigo-500
+  //   icon: "TrendingUp",
+  // },
   {
     id: "business",
     name: "Business",
@@ -159,6 +159,137 @@ export const defaultCategories = [
     color: "#94a3b8", // slate-400
     icon: "MoreHorizontal",
   },
+
+  //INVESTMENTS 
+//   {
+//   id: "Investments",
+//   name: "Investments",
+//   type: "INVES",
+//   color: "#6366f1", // indigo-500
+//   icon: "TrendingUp",
+// },
+{
+  id: "fd",
+  name: "Fixed Deposit (FD)",
+  type: "INVESTMENTS",
+  color: "#4ade80", // green-400
+  icon: "Banknote",
+},
+{
+  id: "rd",
+  name: "Recurring Deposit (RD)",
+  type: "INVESTMENTS",
+  color: "#34d399", // emerald-400
+  icon: "Clock",
+},
+{
+  id: "mutual-funds",
+  name: "Mutual Funds",
+  type: "INVESTMENTS",
+  color: "#60a5fa", // blue-400
+  icon: "PieChart",
+},
+{
+  id: "stocks",
+  name: "Stocks",
+  type: "INVESTMENTS",
+  color: "#818cf8", // indigo-400
+  icon: "LineChart",
+},
+{
+  id: "bonds",
+  name: "Bonds",
+  type: "INVESTMENTS",
+  color: "#a78bfa", // violet-400
+  icon: "Link",
+},
+{
+  id: "index-funds",
+  name: "Index Funds",
+  type: "INVESTMENTS",
+  color: "#facc15", // yellow-400
+  icon: "BarChart",
+},
+{
+  id: "etfs",
+  name: "Exchange-Traded Funds (ETFs)",
+  type: "INVESTMENTS",
+  color: "#fcd34d", // amber-300
+  icon: "Layers",
+},
+{
+  id: "reits",
+  name: "REITs",
+  type: "INVESTMENTS",
+  color: "#f97316", // orange-400
+  icon: "Building2",
+},
+{
+  id: "crypto",
+  name: "Cryptocurrencies",
+  type: "INVESTMENTS",
+  color: "#10b981", // teal-500
+  icon: "Bitcoin",
+},
+{
+  id: "commodities",
+  name: "Commodities (Gold, Oil, etc.)",
+  type: "INVESTMENTS",
+  color: "#eab308", // amber-500
+  icon: "Gem",
+},
+{
+  id: "gov-schemes",
+  name: "Government Schemes",
+  type: "INVESTMENTS",
+  color: "#3b82f6", // blue-500
+  icon: "Flag",
+},
+{
+  id: "p2p",
+  name: "Peer-to-Peer Lending",
+  type: "INVESTMENTS",
+  color: "#c084fc", // purple-400
+  icon: "Users",
+},
+{
+  id: "vc",
+  name: "Venture Capital",
+  type: "INVESTMENTS",
+  color: "#ec4899", // pink-500
+  icon: "Rocket",
+},
+{
+  id: "private-equity",
+  name: "Private Equity",
+  type: "INVESTMENTS",
+  color: "#a3e635", // lime-400
+  icon: "Briefcase",
+},
+{
+  id: "annuities",
+  name: "Annuities",
+  type: "INVESTMENTS",
+  color: "#fb923c", // orange-400
+  icon: "Coins",
+},
+{
+  id: "derivatives",
+  name: "Derivatives (Options, Futures)",
+  type: "INVESTMENTS",
+  color: "#facc15", // yellow-400
+  icon: "Shuffle",
+},
+{
+  id: "forex",
+  name: "Foreign Exchange (Forex)",
+  type: "INVESTMENTS",
+  color: "#38bdf8", // sky-400
+  icon: "Globe",
+}
+
+
+
 ];
 
 export const categoryColors = defaultCategories.reduce((acc, category) => {

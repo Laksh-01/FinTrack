@@ -2,12 +2,19 @@ import React, { useEffect, useState } from 'react';
 import { useUser } from '@clerk/clerk-react';
 import CreateAccountDrawer from './CreateAccountDrawer';
 import { AccountCard } from './AccountCard';
-import { Card, CardContent } from '../../components/ui/card';
 import { Plus } from 'lucide-react';
 import { toast } from "sonner";
 import BudgetProgress from './BudgetProgress';
 import { Suspense } from 'react';
 import DashboardOverview from './DashboardOverview';
+
+
+import {Card,
+  CardAction,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardTitle,} from '../../components/ui/card';
 
 const DashboardPage = () => {
   const [accounts, setAccounts] = useState([]);
@@ -155,6 +162,26 @@ const DashboardPage = () => {
         ></DashboardOverview>
 
       </Suspense>
+
+      
+
+
+      {/* Manage Investments */}
+       <Card className="w-[90%] p-10 m-10" >
+      
+        <CardTitle>Manage Investments .. ASK AI</CardTitle>
+        <CardDescription>
+         To be Available SOON!!!!
+        </CardDescription>
+        <CardAction>
+        
+        </CardAction>
+  
+      <CardContent>
+      </CardContent>
+      <CardFooter className="flex-col gap-2">
+      </CardFooter>
+    </Card>
 
 
 

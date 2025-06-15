@@ -157,12 +157,10 @@ const AddTransactionForm = ({ accounts, categories, editMode = false, initialDat
   if (scannedData) {
     const { amount, date, description, category } = scannedData;
 
-    // --- THE FIX IS HERE ---
-    if (amount != null) { // Use != null to catch both null and undefined
+    if (amount != null) {
       const numericAmount = parseFloat(amount);
       if (!isNaN(numericAmount)) {
-        // Set the value as a NUMBER and trigger validation to clear any old errors.
-        setValue("amount", numericAmount, { shouldValidate: true });
+        setValue("amount",String(numericAmount), { shouldValidate: true });
       }
     }
     // --- END OF FIX ---
@@ -206,6 +204,7 @@ const AddTransactionForm = ({ accounts, categories, editMode = false, initialDat
           <SelectContent>
             <SelectItem value="EXPENSE">Expense</SelectItem>
             <SelectItem value="INCOME">Income</SelectItem>
+            <SelectItem value="INVESTMENTS">Investments</SelectItem>
           </SelectContent>
         </Select>
         {errors.type && <p className="text-sm text-red-500">{errors.type.message}</p>}
