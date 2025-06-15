@@ -67,7 +67,7 @@ const createTransaction = async (req, res) => {
       return res.status(404).json({ error: "Account not found" });
     }
 
-    const balanceChange = data.type === "EXPENSE" ? -data.amount : data.amount;
+    const balanceChange = data.type === "INCOME" ? +data.amount : -data.amount;
     const newBalance = account.balance.toNumber() + balanceChange;
 
     const transaction = await db.$transaction(async (tx) => {
@@ -229,12 +229,12 @@ const updateTransaction = async (req, res) => {
     if (!originalTransaction) throw new Error("Transaction not found");
 
     const oldBalanceChange =
-      originalTransaction.type === "EXPENSE"
-        ? -originalTransaction.amount.toNumber()
-        : originalTransaction.amount.toNumber();
+      originalTransaction.type === "INCOME"
+        ? originalTransaction.amount.toNumber()
+        : -originalTransaction.amount.toNumber();
 
     const newBalanceChange =
-      data.type === "EXPENSE" ? -data.amount : data.amount;
+      data.type === "INCOME" ? data.amount : -data.amount;
 
     const netBalanceChange = newBalanceChange - oldBalanceChange;
 
