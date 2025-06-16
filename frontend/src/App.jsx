@@ -11,6 +11,8 @@ import './App.css';
 import AccountPage from './component/AccountPage';
 import TransactionPage from './component/TransactionPage';
 
+import ManageInvestments from './component/ManageInvestments';
+
 function App() {
   const { isSignedIn, isLoaded } = useUser();
 
@@ -39,6 +41,7 @@ function App() {
       <Route path="/transaction/create" element={<TransactionPage />} />
       <Route path="/transaction/edit/:accountId" element={<TransactionPage />} />
       <Route path="/account/:accountId" element={<AccountPage />} />
+      <Route path="/manage-investments/:accountId" element={<ManageInvestments />} />
 
       {/* Fallback for any unknown paths */}
       <Route path="*" element={<PageNotFound />} />

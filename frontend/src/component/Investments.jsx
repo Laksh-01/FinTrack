@@ -18,6 +18,8 @@ import {
 import { Card, CardContent, CardHeader, CardTitle } from '../../components/ui/card';
 import { cn } from '../lib/utils';
 import { TrendingUp } from 'lucide-react';
+import { Button } from '../../components/ui/button';
+import { useNavigate } from 'react-router-dom';
 
 const COLORS = [
   '#FFD166',
@@ -29,6 +31,7 @@ const COLORS = [
 ];
 
 const InvestmentOverview = ({ accounts, transactions }) => {
+    const navigate = useNavigate();
   const [selectedAccountId, setSelectedAccountId] = useState(
     accounts.find((a) => a.isDefault)?.id || accounts[0]?.id || ''
   );
@@ -63,6 +66,7 @@ const InvestmentOverview = ({ accounts, transactions }) => {
       <Card>
         <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-4">
           <CardTitle className="text-base font-normal">Recent Investments</CardTitle>
+
           <Select value={selectedAccountId} onValueChange={setSelectedAccountId}>
             <SelectTrigger className="w-[140px]">
               <SelectValue placeholder="Select account" />
@@ -75,6 +79,7 @@ const InvestmentOverview = ({ accounts, transactions }) => {
               ))}
             </SelectContent>
           </Select>
+         
         </CardHeader>
         <CardContent>
           <div className="space-y-4">
@@ -102,8 +107,25 @@ const InvestmentOverview = ({ accounts, transactions }) => {
                   </div>
                 </div>
               ))
+
+              
+              
             )}
           </div>
+
+
+       <div className="flex flex-col min-h-[300px] justify-end items-center py-10 cursor-pointer">
+  {recentInvestments.length > 0 && (
+    <Button className="bg-blue-700 hover:bg-secondary/90 text-white text-sm px-6 py-3 rounded-2xl shadow-lg transition-all duration-200"  onClick={() => navigate(`/manage-investments/${selectedAccountId}`)} >
+      Know more about your investments with AI
+    </Button>
+  )}
+</div>
+
+
+
+
+          
         </CardContent>
       </Card>
 

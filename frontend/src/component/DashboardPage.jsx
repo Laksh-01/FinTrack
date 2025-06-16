@@ -176,7 +176,7 @@ const DashboardPage = () => {
         transactions = {transactions}
       
         ></Investments>
-
+        
       </Suspense>
 
 
