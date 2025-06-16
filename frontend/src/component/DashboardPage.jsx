@@ -15,6 +15,7 @@ import {Card,
   CardDescription,
   CardFooter,
   CardTitle,} from '../../components/ui/card';
+import Investments from './Investments';
 
 const DashboardPage = () => {
   const [accounts, setAccounts] = useState([]);
@@ -49,6 +50,8 @@ const DashboardPage = () => {
   };
 
 
+  
+
 
   const getTransactions = async () => {
     try {
@@ -62,7 +65,6 @@ const DashboardPage = () => {
       const result = await response.json();
       setTransaction(result.transactions);
 
-      // setAccounts(result.data || []);
     } catch (error) {
       console.error('Error:', error);
     } finally {
@@ -167,21 +169,15 @@ const DashboardPage = () => {
 
 
       {/* Manage Investments */}
-       <Card className="w-[90%] p-10 m-10" >
+     
+    <Suspense fallback={"Loading Investments..."}>
+        <Investments
+        accounts = {accounts} 
+        transactions = {transactions}
       
-        <CardTitle>Manage Investments .. ASK AI</CardTitle>
-        <CardDescription>
-         To be Available SOON!!!!
-        </CardDescription>
-        <CardAction>
-        
-        </CardAction>
-  
-      <CardContent>
-      </CardContent>
-      <CardFooter className="flex-col gap-2">
-      </CardFooter>
-    </Card>
+        ></Investments>
+
+      </Suspense>
 
 
 

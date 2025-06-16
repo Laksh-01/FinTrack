@@ -13,7 +13,7 @@ const account = require('./routes/account');
 const transactions = require('./routes/transactions');
 const budget = require('./routes/budget');
 const transactionHandler  = require('./routes/createtransaction.js');
-
+const investmentsHandler = require('./routes/investments.js');
 
 // require('./src/inngest/registerFunction.js'); // ✅ This handles function registration
 
@@ -46,6 +46,7 @@ app.use('/api', account());
 app.use('/api', transactions());
 app.use('/api', budget());
 app.use('/api', transactionHandler());
+app.use('/api', investmentsHandler());
 
 app.use('/api/inngest', inngestHandler); // POST to this sends events
 

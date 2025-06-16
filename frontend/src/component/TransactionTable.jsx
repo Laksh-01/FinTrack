@@ -360,9 +360,9 @@ const TransactionTable = ({ transactions = [], onDataChange }) => {
                                     <TableCell data-label="Category" className='sm:table-cell capitalize'>
                                         <span style={{ background: categoryColors[transaction.category] || '#6B7280' }} className='px-2 py-1 rounded text-white text-sm'>{transaction.category}</span>
                                     </TableCell>
-                                    <TableCell data-label="Amount" className="sm:table-cell sm:text-right" style={{ color: transaction.type === "EXPENSE" ? "#DC2626" : "#16A34A" }}  // red-600 and green-600
+                                    <TableCell data-label="Amount" className="sm:table-cell sm:text-right" style={{ color: transaction.type === "INCOME" ? "#16A34A" : "#DC2626" }} 
 >
-                                        {transaction.type === "EXPENSE" ? "-" : "+"}
+                                        {transaction.type === "INCOME" ? "+" : "-"}
                                         ₹{parseFloat(transaction.amount).toFixed(2)}
                                     </TableCell>
                                     <TableCell data-label="Recurring" className="sm:table-cell">
