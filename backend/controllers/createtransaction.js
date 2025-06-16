@@ -74,11 +74,12 @@ const createTransaction = async (req, res) => {
       const newTransaction = await tx.transaction.create({
         data: {
           ...data,
-          userId: user.id,
-          nextRecurringDate:
-            data.isRecurring && data.recurringInterval
-              ? calculateNextRecurringData(data.date, data.recurringInterval)
-              : null,
+            interestRate: data.type === "INVESTMENTS" ? parseFloat(data.interestRate) || 0 : 0,
+            userId: user.id,
+            nextRecurringDate:
+              data.isRecurring && data.recurringInterval
+                ? calculateNextRecurringData(data.date, data.recurringInterval)
+                : null,
         },
       });
 
@@ -245,11 +246,13 @@ const updateTransaction = async (req, res) => {
           id: transactionId,
         },
         data: {
-          ...data,
-          nextRecurringDate:
-            data.isRecurring && data.recurringInterval
-              ? calculateNextRecurringDate(data.date, data.recurringInterval)
-              : null,
+            ...data,
+            interestRate: data.type === "INVESTMENTS" ? parseFloat(data.interestRate) || 0 : 0,
+            userId: user.id,
+            nextRecurringDate:
+              data.isRecurring && data.recurringInterval
+                ? calculateNextRecurringData(data.date, data.recurringInterval)
+                : null,
         },
       });
 

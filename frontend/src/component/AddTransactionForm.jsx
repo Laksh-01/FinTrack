@@ -45,6 +45,7 @@ const AddTransactionForm = ({ accounts, categories, editMode = false, initialDat
       category: "",
       date: new Date(),
       isRecurring: false,
+      interestRate : 6.5,
       recurringInterval: undefined,
     },
   });
@@ -269,6 +270,24 @@ const AddTransactionForm = ({ accounts, categories, editMode = false, initialDat
         {errors.category && <p className="text-sm text-red-500">{errors.category.message}</p>}
       </div>
 
+      {/* ROI */}
+
+        {type === "INVESTMENTS" && (
+    <div className="space-y-2">
+      <label className="text-sm font-medium block w-[150px]">Rate of Interest (%)</label>
+      <Input
+        type="number"
+        step="0.01"
+        placeholder="e.g., 7.5"
+        {...register("interestRate", {valueAsNumber : true}) }
+      />
+      {errors.interestRate && (
+        <p className="text-sm text-red-500">{errors.interestRate.message}</p>
+      )}
+    </div>
+  )}
+
+      
       {/* Date */}
       <div className="space-y-2">
         <label className="text-sm font-medium block w-[150px]">Date</label>

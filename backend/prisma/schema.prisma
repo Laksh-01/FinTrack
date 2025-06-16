@@ -59,6 +59,7 @@ model Transaction {
   status            TransactionStatus  @default(COMPLETED)
   userId            String
   accountId         String
+  interestRate      Decimal            @default(0)
   createdAt         DateTime           @default(now())
   updatedAt         DateTime           @updatedAt
   account           Account            @relation(fields: [accountId], references: [id], onDelete: Cascade)
