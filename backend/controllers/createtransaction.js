@@ -1,5 +1,4 @@
 const db = require("../lib/prisma");
-// const { aj } = require("../arcjet"); // ✅ Correct Arcjet instance
 const {GoogleGenerativeAI} = require("@google/generative-ai");
 
 const genAi = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);

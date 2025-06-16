@@ -63,7 +63,7 @@ const InvestmentOverview = ({ accounts, transactions }) => {
   return (
     <div className="grid gap-4 md:grid-cols-2 p-5">
       {/* Recent Investments Card */}
-      <Card>
+      <Card className="">
         <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-4">
           <CardTitle className="text-base font-normal">Recent Investments</CardTitle>
 
