@@ -8,8 +8,9 @@ const ManageInvestments = () => {
     <div>
       <Navbar></Navbar>
       <ChatBotWidget></ChatBotWidget>
+      
+      
     </div>
-    // <CurrentlyUnderProgress></CurrentlyUnderProgress>
     
   )
 }

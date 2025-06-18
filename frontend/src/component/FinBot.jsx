@@ -38,7 +38,7 @@ const FinBot = () => {
 
 
     try {
-      const res = await fetch(`http://localhost:3000/api/investments/${isInvestmentAnalysis ? 'askAi' : 'chat'}`, {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/investments/${isInvestmentAnalysis ? 'askAi' : 'chat'}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
