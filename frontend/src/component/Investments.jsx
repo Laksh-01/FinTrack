@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState , useMemo} from 'react';
 import {
   PieChart,
   Pie,
@@ -32,9 +32,10 @@ const COLORS = [
 
 const InvestmentOverview = ({ accounts, transactions }) => {
     const navigate = useNavigate();
-  const [selectedAccountId, setSelectedAccountId] = useState(
-    accounts.find((a) => a.isDefault)?.id || accounts[0]?.id || ''
-  );
+ 
+
+  const [selectedAccountId, setSelectedAccountId] = useState('');
+
 
   const accountInvestments = transactions.filter(
     (t) => t.accountId === selectedAccountId && t.type === 'INVESTMENTS'
@@ -59,9 +60,27 @@ const InvestmentOverview = ({ accounts, transactions }) => {
   );
 
   const totalInvested = pieChartData.reduce((sum, item) => sum + item.value, 0);
+  const defaultId = useMemo(() => {
+  return accounts.find((a) => a.isDefault)?.id || accounts[0]?.id;
+}, [accounts]);
+
+useEffect(() => {
+  if (!selectedAccountId && defaultId) {
+    setSelectedAccountId(defaultId);
+  }
+}, [defaultId, selectedAccountId]);
+
+useEffect(() => {
+  if (defaultId) {
+    setSelectedAccountId(defaultId);
+  }
+}, [defaultId]);
+
+
+
 
   return (
-    <div className="grid gap-4 md:grid-cols-2 p-5">
+    <div className=" p-5">
       {/* Recent Investments Card */}
       <Card className="">
         <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-4">
@@ -129,7 +148,7 @@ const InvestmentOverview = ({ accounts, transactions }) => {
         </CardContent>
       </Card>
 
-      {/* Investment Breakdown Card */}
+      {/* Investment Breakdown Card
       <Card>
         <CardHeader>
           <CardTitle className="text-base font-normal">Investment Distribution</CardTitle>
@@ -178,7 +197,7 @@ const InvestmentOverview = ({ accounts, transactions }) => {
             </>
           )}
         </CardContent>
-      </Card>
+      </Card> */}
     </div>
   );
 };

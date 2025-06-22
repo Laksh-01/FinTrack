@@ -18,6 +18,7 @@ import {
 } from '../../components/ui/select';
 import { Card, CardContent, CardHeader, CardTitle } from '../../components/ui/card';
 import { cn } from '../lib/utils'; 
+import { useEffect } from 'react';
 
 const COLORS = [
   '#FF6B6B',
@@ -30,9 +31,7 @@ const COLORS = [
 ];
 
 const DashboardOverview = ({ accounts, transactions }) => {
-  const [selectedAccountId, setSelectedAccountId] = useState(
-    accounts.find((a) => a.isDefault)?.id || accounts[0]?.id || ''
-  );
+  const [selectedAccountId, setSelectedAccountId] = useState('');
 
   const accountTransactions = transactions.filter(
     (t) => t.accountId === selectedAccountId
@@ -69,6 +68,13 @@ const DashboardOverview = ({ accounts, transactions }) => {
   );
 
   const totalExpenses = pieChartData.reduce((sum, item) => sum + item.value, 0);
+
+ useEffect(() => {
+  const defaultId = accounts.find((a) => a.isDefault)?.id || accounts[0]?.id;
+  if (defaultId && selectedAccountId !== defaultId) {
+    setSelectedAccountId(defaultId);
+  }
+}, [accounts]);
 
   return (
     <div className="grid gap-4 md:grid-cols-2 p-5">

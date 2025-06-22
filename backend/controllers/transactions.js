@@ -26,7 +26,7 @@ const deleteBulkTransactions = async (req, res) => {
       return res.status(403).json({ error: "Forbidden: You can only delete your own transactions, or some IDs were not found." });
     }
 
-    // Use a Map to correctly group balance changes by accountId
+  
     const accountBalanceChanges = new Map();
 
     for (const transaction of transactionsToDelete) {
